@@ -18,7 +18,7 @@ function Student() {
   const loadStudents = async () => {
     try {
       const result = await axios.get(
-        "http://localhost:8081/api/v1/student/getAll"
+        "http://localhost:8080/api/v1/student/getAll"
       );
       console.log("API Response:", result.data); // Temporary log to check data structure
       if (Array.isArray(result.data)) {
