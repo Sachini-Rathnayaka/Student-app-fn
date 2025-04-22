@@ -1,101 +1,255 @@
+:root {
+  --primary-color: #2196f3;
+  --secondary-color: #1976d2;
+  --success-color: #4caf50;
+  --danger-color: #f44336;
+  --warning-color: #ff9800;
+  --text-color: #333;
+  --bg-color: #f5f7fa;
+  --card-bg: #ffffff;
+}
+
 body {
-    background-color: #1e1e1e;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.container h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-color);
+  margin: 1rem auto;
+  border-radius: 2px;
+}
+
+.form-container {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-5px);
+}
+
+.form-container h2 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.button-group {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+.btn-warning {
+  background-color: var(--warning-color);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #757575;
+  color: white;
+}
+
+.btn-edit {
+  background-color: var(--success-color);
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.btn-delete {
+  background-color: var(--danger-color);
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.students-list {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.students-list h2 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.students-table th,
+.students-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.students-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: var(--text-color);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.students-table tr:last-child td {
+  border-bottom: none;
+}
+
+.students-table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.students-table tbody tr:hover {
+  background-color: #f5f9ff;
+}
+
+.students-table td button {
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
   .container {
-    text-align: center;
-    width: 100%;
-    max-width: 1400px;
-    padding: 20px;
+    padding: 0 1rem;
   }
-  
-  .container h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    background-color: #333;
-    padding: 10px;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 410px; /* Header width as per UI design */
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
+
+  .form-container,
+  .students-list {
+    padding: 1.5rem;
   }
-  
-  .form-container {
-    background-color: #263c2c;
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 600px; /* Form wider than header */
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-  
-  .form-container h2 {
-    font-size: 25px;
-    margin-bottom: 30
-    px;
-  }
-  
-  .form-columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
-    gap: 15px; /* Space between columns */
-    margin-bottom: 20px;
-  }
-  
-  .column {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Space between fields in the same column */
-  }
-  
-  .form-group {
-    text-align: left;
-  }
-  
-  .form-group label {
+
+  .students-table {
     display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
+    overflow-x: auto;
+    white-space: nowrap;
   }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #000;
-    font-size: 14px;
-    box-sizing: border-box;
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
-  
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+}
+
+/* Animation for new/updated rows */
+@keyframes highlight {
+  0% {
+    background-color: #fff3e0;
   }
-  
-  .button-group button {
-    width: 48%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #635f5f;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
+  100% {
+    background-color: transparent;
   }
-  
-  .button-group button:hover {
-    background-color: #635f5f;
-  }
+}
+
+.highlight {
+  animation: highlight 2s ease-out;
+}

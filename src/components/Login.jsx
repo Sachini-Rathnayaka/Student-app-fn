@@ -1,28 +1,42 @@
-import React, { useState } from 'react';
-import './Login.css'; // For styling
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css"; // For styling
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Login = ({ onLogin }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  // Default credentials
+  const DEFAULT_USERNAME = "admin";
+  const DEFAULT_PASSWORD = "admin123";
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Email:', email, 'Password:', password);
-    // Add your login logic here (e.g., API call)
+    setError("");
+
+    if (username === DEFAULT_USERNAME && password === DEFAULT_PASSWORD) {
+      onLogin(true);
+      navigate("/students");
+    } else {
+      setError("Invalid username or password");
+    }
   };
 
   return (
     <div className="login-background">
       <div className="login-container">
-        <h2>Login</h2>
+        <h2>Student Management System</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Email</label>
+            <label>Username</label>
             <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
+              placeholder="Enter username"
             />
           </div>
           <div className="form-group">
@@ -32,18 +46,19 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              placeholder="Enter password"
             />
           </div>
-          <div className="forgot-password">
-            <a href="/forgot-password">Forget Your Password?</a>
-          </div>
+          {error && <div className="error-message">{error}</div>}
           <div className="button-group">
-            <button type="button" className="register-btn">
-              Register
-            </button>
             <button type="submit" className="signin-btn">
               Sign In
             </button>
+          </div>
+          <div className="default-credentials">
+            <p>Default Credentials:</p>
+            <p>Username: admin</p>
+            <p>Password: admin123</p>
           </div>
         </form>
       </div>
